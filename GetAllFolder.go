@@ -6,6 +6,10 @@ import (
 	"strings"
 )
 
+var (
+	all []string
+)
+
 func ListFolders(dirname string) []string {
 	fileInfos, _ := os.ReadDir(dirname)
 	var folders []string
@@ -21,9 +25,10 @@ func ListFolders(dirname string) []string {
 				continue
 			}
 			log.Debug.Printf("获取到的文件夹:%v\n", filename)
+			all = append(all, filename)
 			folders = append(folders, filename)
 			ListFolders(filename) //递归调用
 		}
 	}
-	return folders
+	return all
 }
