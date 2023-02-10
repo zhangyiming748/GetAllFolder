@@ -24,7 +24,7 @@ func ListFolders(dirname string) []string {
 				log.Info.Printf("跳过隐藏文件夹:%v\n", fi.Name())
 				continue
 			}
-			log.Debug.Printf("获取到的文件夹:%v\n", filename)
+			log.Info.Printf("获取到的文件夹:%v\n", filename)
 			all = append(all, filename)
 			folders = append(folders, filename)
 			ListFolders(filename) //递归调用
