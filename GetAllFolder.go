@@ -20,6 +20,9 @@ func ListFolders(dirname string) []string {
 			if strings.Contains(fi.Name(), "h265") {
 				continue
 			}
+			if strings.Contains(fi.Name(), "bigger") {
+				continue
+			}
 			if strings.Contains(filename, "/.") {
 				log.Info.Printf("跳过隐藏文件夹:%v\n", fi.Name())
 				continue
