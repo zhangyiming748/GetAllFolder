@@ -14,7 +14,7 @@ func ListFolders(dirname string) []string {
 	fileInfos, _ := os.ReadDir(dirname)
 	var folders []string
 	for _, fi := range fileInfos {
-		filename := strings.Join([]string{dirname, fi.Name()}, "/") //拼写当前文件夹中所有的文件地址
+		filename := strings.Join([]string{dirname, fi.Name()}, string(os.PathSeparator)) //拼写当前文件夹中所有的文件地址
 		// log.Info.Println(filename)                                  //打印文件地址
 		if fi.IsDir() { //判断是否是文件夹 如果是继续调用把自己的地址作为参数继续调用
 			if strings.Contains(fi.Name(), "h265") {
