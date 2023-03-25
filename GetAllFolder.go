@@ -1,7 +1,7 @@
 package GetAllFolder
 
 import (
-	"github.com/zhangyiming748/log"
+	"golang.org/x/exp/slog"
 	"os"
 	"strings"
 )
@@ -24,10 +24,10 @@ func ListFolders(dirname string) []string {
 				continue
 			}
 			if strings.Contains(filename, "/.") {
-				log.Info.Printf("跳过隐藏文件夹:%v\n", fi.Name())
+				slog.Info("跳过隐藏文件夹", slog.Any("文件名", fi.Name()))
 				continue
 			}
-			log.Info.Printf("获取到的文件夹:%v\n", filename)
+			slog.Info("获取到文件夹", slog.Any("文件名", filename))
 			all = append(all, filename)
 			folders = append(folders, filename)
 			ListFolders(filename) //递归调用
