@@ -44,7 +44,7 @@ func SetLog(level string) {
 		}
 
 	}
-	file := "processVideo.log"
+	file := "GetAllFolder.log"
 	logf, err := os.OpenFile(file, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0777)
 	if err != nil {
 		panic(err)
