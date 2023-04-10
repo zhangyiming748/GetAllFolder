@@ -53,10 +53,11 @@ func SetLog(level string) {
 	mylog = slog.New(opt.NewJSONHandler(io.MultiWriter(logf, os.Stdout)))
 
 }
-
-func ListFolders(dirname string) []string {
-	l := os.Getenv("LEVEL")
-	SetLog(l)
+func ListFolders(dirname, level string) []string {
+	SetLog(level)
+	return List(dirname)
+}
+func List(dirname string) []string {
 	fileInfos, _ := os.ReadDir(dirname)
 	var folders []string
 	for _, fi := range fileInfos {
@@ -70,7 +71,7 @@ func ListFolders(dirname string) []string {
 			mylog.Info("获取到文件夹", slog.String("文件名", filename))
 			all = append(all, filename)
 			folders = append(folders, filename)
-			ListFolders(filename) //递归调用
+			List(filename) //递归调用
 		}
 	}
 	return all
