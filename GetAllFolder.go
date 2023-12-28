@@ -1,7 +1,7 @@
 package GetAllFolder
 
 import (
-	"golang.org/x/exp/slog"
+	"log/slog"
 	"os"
 	"strings"
 )
@@ -12,6 +12,7 @@ var (
 
 /*
 递归获取文件夹和全部子文件夹
+不包括文件夹本身
 */
 func List(dirname string) []string {
 	fileInfos, _ := os.ReadDir(dirname)
